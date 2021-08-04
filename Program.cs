@@ -82,7 +82,7 @@ namespace Desafio
                         Console.WriteLine();
                         Console.Write("Digite o brinco do boi: ");
                         b.Brinco = Console.ReadLine();
-                        Console.Write("Digite a area para o boi: ");
+                        Console.Write("Digite a area: ");
                         b.AreaBoi = Console.ReadLine();
                         Console.Write("Digite o número de dias: ");
                         b.Ndias = int.Parse(Console.ReadLine());
@@ -94,7 +94,7 @@ namespace Desafio
                     case 5:
 
                         Console.WriteLine();
-                        Console.WriteLine("Bois atribuídos nas áreas : ");
+                        Console.WriteLine("Somente os bois atribuídos em áreas: ");
                         BoiNaArea();
                         Console.WriteLine();
                         Console.Write("Digite 5 para ver novamente ou escolha outra opção: ");
@@ -109,6 +109,7 @@ namespace Desafio
                         b.Brinco = Console.ReadLine();
                         BuscaBoi(b.Brinco);
                         Console.WriteLine();
+
                         Console.Write("Digite 6 para buscar outro brinco ou escolha outra opção: ");
 
                         continue;
@@ -153,7 +154,7 @@ namespace Desafio
             {
                 foreach (var i in bois)
                 {
-                    Console.WriteLine("Brinco do boi: {0}, Peso do boi: {1}", i.Brinco, i.Peso);
+                    Console.WriteLine("Brinco do boi: {0}, Peso do boi: {1}, Area do boi: {2}", i.Brinco, i.Peso,i.AreaBoi);
                 }
             }
 
@@ -162,6 +163,7 @@ namespace Desafio
 
                 if (Exist(brinco) == true && ExistArea(area))
                 {
+
                     foreach (var i in bois)
                     {
 
@@ -176,6 +178,12 @@ namespace Desafio
                                     i.AreaBoi = area;
                                     i.Peso += (j.GMD * Ndias);
                                 }
+                                else
+                                {
+                                    Console.WriteLine("Área cheia");
+                                    break;
+                                }
+
                             }
                             else
                             {
@@ -186,7 +194,7 @@ namespace Desafio
                 }
                 else
                 {
-                    Console.WriteLine("O brinco especificado ou a área especificada não existe");
+                    Console.WriteLine("O brinco ou a área especifica não existem");
                 }
             }
 
@@ -208,7 +216,7 @@ namespace Desafio
 
              void AdicionarArea(string nameArea, int max, double gmd)
             {
-                if (ExistArea(nameArea) == true)
+                if (ExistArea(nameArea) != true)
                 {
                     areas.Add(new Area(nameArea, max, gmd));
                 }
@@ -217,16 +225,31 @@ namespace Desafio
                     Console.WriteLine("A área já está cadastrada");
                 }
             }
-             bool ExistArea(string brinco)
+
+             bool ExistArea(string nameArea)
             {
-                return bois.Any(x => x.Brinco == brinco);
+                if (areas.Any(x => x.nameArea == nameArea))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
 
 
 
-            bool Exist(string nameArea)
+            bool Exist(string boi)
             {
-                return areas.Any(x => x.nameArea == nameArea);
+                if (bois.Any(x => x.Brinco == boi))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }

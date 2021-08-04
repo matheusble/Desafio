@@ -50,7 +50,7 @@ namespace Desafio.Models
 
         public override string ToString()
         {
-            return "Brinco do boi: " + Brinco + "," + " Peso do boi: " + Peso;
+            return "Brinco do boi: " + Brinco + "," + " Peso do boi: " + Peso + " Area do boi: " + AreaBoi;
 
         }
     }
