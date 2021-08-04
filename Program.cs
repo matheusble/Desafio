@@ -27,7 +27,7 @@ namespace Desafio
             Console.WriteLine("#4: Simular o GMD do boi na área#");
             Console.WriteLine("#5: Listar todos os bois já designados em áreas#");
             Console.WriteLine("#6: Para buscar um brinco específico#");
-            Console.WriteLine("#7: Exit");
+            Console.WriteLine("#7: Exit#");
             bool con = true;
 
             while (con)
@@ -123,6 +123,7 @@ namespace Desafio
             }
 
 
+            //Adiciona um boi na lista.
             void AdicionarBoi(string brinco, double peso)
             {
 
@@ -135,7 +136,8 @@ namespace Desafio
                     Console.WriteLine("O brinco especificado já está cadastrado");
                 }
             }
-
+            
+           //Laço foreach Filtra os que já estão atribuídos a alguma área, retonando um aviso caso esteja vazio.
             void BoiNaArea()
             {
                 foreach (var i in bois)
@@ -150,6 +152,8 @@ namespace Desafio
                     }
                 }
             }
+            
+            //Laço foreach seleciona todos os bois já cadastrados.
             void ListarBois()
             {
                 foreach (var i in bois)
@@ -157,7 +161,9 @@ namespace Desafio
                     Console.WriteLine("Brinco do boi: {0}, Peso do boi: {1}, Area do boi: {2}", i.Brinco, i.Peso,i.AreaBoi);
                 }
             }
+            
 
+            //Percorre as duas listas e verifica se o nome da área e do brinco são válidos, além de modificar o peso pelo GMD e adiciona o boi na área.
             void MudarBoi(string brinco, string area, int Ndias)
             {
 
@@ -198,7 +204,7 @@ namespace Desafio
                 }
             }
 
-
+            //Busca um brinco específico.
             void BuscaBoi(string brinco)
             {
                 if (Exist(brinco) == true)
@@ -213,7 +219,7 @@ namespace Desafio
             }
 
 
-
+            //Adiciona uma nova área e verifica se o nome já foi cadastrado utilizando o método ExistArea.
              void AdicionarArea(string nameArea, int max, double gmd)
             {
                 if (ExistArea(nameArea) != true)
@@ -225,7 +231,8 @@ namespace Desafio
                     Console.WriteLine("A área já está cadastrada");
                 }
             }
-
+            
+            //Percorre a lista utilizando expressões lambda e retorna true caso o nome já esteja cadastrado e false caso contrário.
              bool ExistArea(string nameArea)
             {
                 if (areas.Any(x => x.nameArea == nameArea))
@@ -239,7 +246,7 @@ namespace Desafio
             }
 
 
-
+            //Percorre a lista utilizando expressões lambda e retorna true caso o nome já esteja cadastrado e false caso contrário.
             bool Exist(string boi)
             {
                 if (bois.Any(x => x.Brinco == boi))
