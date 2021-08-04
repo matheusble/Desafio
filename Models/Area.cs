@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Desafio.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,8 @@ namespace Desafio.Models
 {
     public class Area
     {
-        public static List<Area> areas { get; set; }
-        public static List<Boi> bois { get; set; }
+        BoiViewModel model = new BoiViewModel();
+
 
         public long Id { get => Id ; set => Id++; } 
         public string nameArea { get; set; }
@@ -28,10 +29,8 @@ namespace Desafio.Models
             this.max = max;
             GMD = gMD;
         }
-        public void AdicionarArea(string nameArea, int max, double gmd)
-        {
-            areas.Add(new Area(nameArea, max, gmd));
-        }
+       
+        
 
         public Area(string nameArea)
         {
